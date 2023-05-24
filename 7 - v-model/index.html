@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>7 - v-model</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="app">
+        <input type="checkbox" v-model="imgShow" />
+        <input type="text" placeholder="title" v-model="title" />
+        <input type="text" placeholder="img" v-model="imgUrl" />
+        <br />
+        <div v-if="imgShow">
+          <img @click="changeImg" :src="imgUrl" :alt="title" width="500" />
+        </div>
+      </div>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            title: "forest",
+            imgShow: true,
+            imgUrl: "./img/1.jpeg",
+          };
+        },
+        methods: {
+          changeImg() {
+            const images = ["./img/1.jpeg", "./img/2.jpeg"];
+            this.imgUrl = images[Math.floor(Math.random() * images.length)];
+          },
+        },
+        computed: {},
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

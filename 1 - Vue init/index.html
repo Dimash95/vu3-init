@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1 - Vue init</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="app">{{title}}</div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const App = {
+        data() {
+          return {
+            title: "Vue init; Work with data",
+          };
+        },
+      };
+      Vue.createApp(App).mount("#app");
+      console.log(Vue);
+    </script>
+  </body>
+</html>

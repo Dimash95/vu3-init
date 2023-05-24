@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>8 - v-for</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="app">
+        <button @click="addPerson">Add person</button>
+        <ul>
+          <li v-for="person in people" key="person.id">
+            {{person.id}}. {{person.name}} - {{person.age}} age
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            people: [
+              {
+                id: "1",
+                name: "Dimash",
+                age: 28,
+                male: true,
+              },
+              {
+                id: "2",
+                name: "Adil",
+                age: 25,
+                male: true,
+              },
+              {
+                id: "3",
+                name: "Elnar",
+                age: 20,
+                male: true,
+              },
+            ],
+          };
+        },
+        methods: {
+          addPerson() {
+            this.people.push({
+              id: this.people.length + 1,
+              name: Math.random().toString(36).substring(7),
+              age: Math.floor(Math.random() * 50),
+              male: true,
+            });
+          },
+        },
+      };
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
